@@ -1,3 +1,14 @@
+<div class='p-3 form-container'>
+  <form (ngSubmit)="addUser($event)">
+    <label for='username'>Username: </label>
+    <input type="text" name="username" id='username' class='m-3' required>
+    <label for='role'>Role: </label>
+    <input type="text" name="role" id='role' class='m-3' required>
+
+    <button type='submit'>Add</button>
+  </form>
+</div>
+
 <table>
   <thead>
     <tr>
@@ -11,7 +22,7 @@
       <th>{{ user.name }}</th>
       <th>{{ user.role }}</th>
       <th *ngIf="utils.AppName.Operator === appName">
-        <button>削除</button>
+        <button (click)="removeUser(user.name)">削除</button>
       </th>
     </tr>
   </tbody>

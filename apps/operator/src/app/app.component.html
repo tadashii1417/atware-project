@@ -6,4 +6,33 @@
   />
   <h1>Welcome to {{ title }}!</h1>
 </header>
+<!-- 
+<div class='p-3 form-container'>
+	<form (ngSubmit)="addUser($event)">
+		<label for='username'>Username: </label>
+		<input type="text" name="username" id='username' class='m-3' required>
+		<label for='role'>Role: </label>
+		<input type="text" name="role" id='role' class='m-3' required>
+
+		<button type='submit' (click)="addUser('test', 'test')">Add</button>
+	</form>
+</div>
+
+<div class='align-center'>
+	<table style="width:100%" align="center">
+	  <tr>
+	    <th>User</th>
+	    <th>Role</th>
+	    <th>Remove</th>
+	  </tr>
+	  <tbody *ngFor='let user of users'>
+		  <tr>
+		    <td>{{user.username}}</td>
+		    <td>{{user.role}}</td>
+		    <td><button (click)="removeUser(user.username)">Delete</button></td>
+		  </tr>
+	  </tbody>
+	</table>
+</div> -->
+
 <router-outlet></router-outlet>
