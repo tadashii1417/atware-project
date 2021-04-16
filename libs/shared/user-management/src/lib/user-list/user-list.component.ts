@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { AppName, AppNameInjectionToken } from '@monorepos/utils';
-import { allNormalUser, allUser, User } from './user-mock.service';
-import { Observable } from 'rxjs';
+import { allNormalUser, allUser, User} from './user-mock.service';
+import {UserService} from'./user-mock.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'monorepos-user-list',
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-  constructor(@Inject(AppNameInjectionToken) public appName: AppName) {}
+  constructor(@Inject(AppNameInjectionToken) public appName: AppName, private userService: UserService) {}
 
   public utils = {
     AppName,
@@ -19,9 +20,11 @@ export class UserListComponent implements OnInit {
 
   fetchUser(): Observable<User[]> {
     if (this.appName === AppName.Accounting) {
+      // return of(this.userService.getUsers());
       return allNormalUser();
     }
-    return allUser();
+    // return allNormalUser();
+    // return of(this.userService.getUsers());
   }
 
   addUser(name){
