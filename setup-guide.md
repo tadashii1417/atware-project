@@ -1,4 +1,5 @@
-dontpad.com/link
+
+dontpad.com/repo
 
 # Setup guide
 
@@ -18,3 +19,4 @@ npx ng serve operator
 npx ng serve accounting
 ```
 
+## Checkout new branch to complete the task.
