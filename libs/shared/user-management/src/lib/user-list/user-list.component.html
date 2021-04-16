@@ -1,18 +1,37 @@
-<table>
-  <thead>
-    <tr>
-      <th>名</th>
-      <th>ロール</th>
-      <th *ngIf="utils.AppName.Operator === appName">操作</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of fetchUser() | async">
-      <th>{{ user.name }}</th>
-      <th>{{ user.role }}</th>
-      <th *ngIf="utils.AppName.Operator === appName">
-        <button>削除</button>
-      </th>
-    </tr>
-  </tbody>
-</table>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>名</th>
+        <th>ロール</th>
+        <th *ngIf="utils.AppName.Operator === appName">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of this.users">
+        <th>{{ user.name }}</th>
+        <th>{{ user.role }}</th>
+        <th *ngIf="utils.AppName.Operator === appName">
+          <button>削除</button>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+  <div class='form'>
+    <div>
+      <label for="name">
+        名
+      </label>
+      <input id="name" type="text" formControlName="name">
+    </div>
+  
+    <div>
+      <label for="role">
+        ロール
+      </label>
+      <input id="role" type="text" formControlName="role">
+    </div>
+  
+    <button (click)='add()'>Add</button>
+  </div>
+</div>

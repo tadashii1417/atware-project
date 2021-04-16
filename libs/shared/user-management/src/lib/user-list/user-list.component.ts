@@ -9,13 +9,25 @@ import { Observable } from 'rxjs';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-  constructor(@Inject(AppNameInjectionToken) public appName: AppName) {}
-
+  constructor(
+    @Inject(AppNameInjectionToken) public appName: AppName,
+  ) {}
+  add(): void{
+    const name = document.getElementById('name').value
+    const role = document.getElementById('role').value
+    this.users.push({name:name, role:role})
+  }
   public utils = {
     AppName,
   };
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.fetchUser().subscribe((users: User[]) => {
+      this.users = users
+    })
+  }
+
+  users = []
 
   fetchUser(): Observable<User[]> {
     if (this.appName === AppName.Accounting) {
