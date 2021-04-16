@@ -15,28 +15,26 @@ export class UserListComponent implements OnInit {
     AppName,
   };
 
-  ngOnInit(): void {}
-
-  fetchUser(): Observable<User[]> {
+  ngOnInit(): void {
     if (this.appName === AppName.Accounting) {
-      return allNormalUser();
+      allNormalUser().subscribe((users)=>this.users = users);
+    } else {
+      allUser().subscribe((users)=>this.users = users);
     }
-    return allUser();
   }
 
-  addUser = function(user: User){
-    if(this.users.some((u)=>(u.name == user.name && u.role == user.role))){
-      alert('Already Exist!');
-      return;
-    }
+  users;
 
-    this.users.push({
-      'username': user.name,
-      'role': user.role
-    });
+  addUser = function(e){
+    e.preventDefault();
+    this.users.push(<User>{ 'name': e.target.name, 'role': e.target.role });
+
+    return false;
   }
 
   removeUser = function(username){
-    this.users = this.users.filter((user)=>user.username != username);
+    this.users = this.users.filter((user) => user.name != username);
+
+    return false;
   }
 }

@@ -1,5 +1,5 @@
 <div class='p-3 form-container'>
-  <form (ngSubmit)="addUser($event)">
+  <form (submit)="addUser($event)">
     <label for='username'>Username: </label>
     <input type="text" name="username" id='username' class='m-3' required>
     <label for='role'>Role: </label>
@@ -18,7 +18,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of fetchUser() | async">
+    <tr *ngFor="let user of users">
       <th>{{ user.name }}</th>
       <th>{{ user.role }}</th>
       <th *ngIf="utils.AppName.Operator === appName">
