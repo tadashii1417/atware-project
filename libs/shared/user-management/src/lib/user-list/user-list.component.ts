@@ -23,4 +23,8 @@ export class UserListComponent implements OnInit {
     }
     return allUser();
   }
+
+  addUser(name){
+    window.alert(name);
+  }
 }
