@@ -10,7 +10,7 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-  constructor(@Inject(AppNameInjectionToken) public appName: AppName, private userService: UserService) {}
+  constructor(@Inject(AppNameInjectionToken) public appName: AppName, @Inject(AppNameInjectionToken) public userService: UserService) {}
 
   public utils = {
     AppName,
@@ -20,11 +20,14 @@ export class UserListComponent implements OnInit {
 
   fetchUser(): Observable<User[]> {
     if (this.appName === AppName.Accounting) {
-      // return of(this.userService.getUsers());
-      return allNormalUser();
+      alert(this.userService.getUsers())
+      return of(this.userService.getUsers());
+
+      // return allNormalUser();
     }
     // return allNormalUser();
-    // return of(this.userService.getUsers());
+    alert(this.userService.getUsers())
+    return of(this.userService.getUsers());
   }
 
   addUser(name){
