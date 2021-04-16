@@ -27,7 +27,7 @@ export class UserListComponent implements OnInit {
 
   addUser = function(e){
     e.preventDefault();
-    this.users.push(<User>{ 'name': e.target.name, 'role': e.target.role });
+    this.users.push(<User>{ 'name': e.target.name.value, 'role': e.target.role.value });
 
     return false;
   }
