@@ -27,13 +27,18 @@ export class UserListComponent implements OnInit {
 
   addUser = function(e){
     e.preventDefault();
+    if(this.users.filter((user)=>user.name==e.target.name.value && user.role==e.target.role.value).length){
+      alert('Existed!');
+      return;
+    }
+
     this.users.push(<User>{ 'name': e.target.name.value, 'role': e.target.role.value });
 
     return false;
   }
 
-  removeUser = function(username){
-    this.users = this.users.filter((user) => user.name != username);
+  removeUser = function(name, role){
+    this.users = this.users.filter((user) => (user.name != name || user.role != role));
 
     return false;
   }

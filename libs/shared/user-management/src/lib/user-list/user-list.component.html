@@ -22,7 +22,7 @@
       <th>{{ user.name }}</th>
       <th>{{ user.role }}</th>
       <th *ngIf="utils.AppName.Operator === appName">
-        <button (click)="removeUser(user.name)">削除</button>
+        <button (click)="removeUser(user.name, user.role)">削除</button>
       </th>
     </tr>
   </tbody>
